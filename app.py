@@ -9,16 +9,19 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, desc
 #from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 #C:\Users\jason\Documents\GitHub\sqlalchemy-challenge\Resources
-path_too = os.path.join("sqlite:///", "Resources/", "hawaii.sqlite")
-#path =  os.path.join("sqlite:///." + os.getcwd(), "sqlalchemy-challenge\\Resources\\hawaii.sqlite")
+#path_too = os.path.join("sqlite:///", "Resources/", "hawaii.sqlite")
+#orignalpath = "sqlite:///Resources/hawaii.sqlite"
+path =  os.path.join("sqlite:///" + os.getcwd(), "Resources\\hawaii.sqlite")
 db_path =  os.path.join("Resources", "hawaii.sqlite")
 con_string = f"sqlite:///{db_path}"
-absolute_path = "sqlite:///C:\\Users\\jason\\Documents\\GitHub\\sqlalchemy-challenge\\Resources\\hawaii.sqlite"
-engine = create_engine(con_string)
+
+
+print(path)
+engine = create_engine(path)
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
